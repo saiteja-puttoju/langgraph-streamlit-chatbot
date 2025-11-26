@@ -1,13 +1,13 @@
 # 🤖 LangGraph Streamlit Chatbot
 
-**LangGraph Streamlit Chatbot** is a stateful conversational application built using Python. It combines **LangGraph** for managing conversation flow and memory with **Streamlit** for a clean, interactive user interface. The bot is powered by Google's **Gemini 1.5 Flash** model to provide intelligent, context-aware responses.
+**LangGraph Streamlit Chatbot** is a stateful conversational application built using Python. It combines **LangGraph** for managing conversation flow and memory with **Streamlit** for a clean, interactive user interface. The bot is powered by Google's **Gemini 2.5 Flash Lite** model to provide intelligent, context-aware responses.
 
 -----
 
 ## 🌟 Key Features
 
   * **Stateful Conversations:** Utilizes `LangGraph`'s checkpointing system (`MemorySaver`) to retain conversation history, allowing the bot to "remember" previous interactions within a session.
-  * **Powerful AI Model:** Integrates Google's `gemini-1.5-flash` model via `langchain-google-genai` for fast and accurate language generation.
+  * **Powerful AI Model:** Integrates Google's `gemini-2.5-flash-lite` model via `langchain-google-genai` for fast and accurate language generation.
   * **Interactive UI:** Features a user-friendly chat interface built with **Streamlit**, which handles user input and displays the chat history in real-time.
   * **Modular Architecture:** Cleanly separates the frontend UI logic (`chatbot_frontend.py`) from the backend agent logic (`langgraph_backend.py`) for better code maintainability.
   * **Session Management:** Uses Streamlit's session state to manage the unique `thread_id` for each conversation, ensuring distinct chat sessions.
@@ -18,10 +18,15 @@
 
   * **Backend:** Python
   * **Agent Framework:** LangGraph
-  * **AI Framework:** LangChain (`langchain-google-genai`)
+  * **AI Framework:** LangChain
   * **Web Framework:** Streamlit
-  * **AI Model:** Google Gemini (`gemini-1.5-flash`)
-  * **Dependencies:**
+  * **AI Model:** Google Gemini (`gemini-2.5-flash-lite`)
+  * **Key Libraries:**
+      * `langgraph`
+      * `langchain`
+      * `langchain-google-genai`
+      * `streamlit`
+      * `pydantic`
       * `python-dotenv`
 
 -----
@@ -40,7 +45,7 @@ Follow these instructions to set up and run the project on your local machine.
 1.  **Clone the repository:**
 
     ```bash
-    git clone [https://github.com/saiteja-puttoju/langgraph-streamlit-chatbot.git](https://github.com/saiteja-puttoju/langgraph-streamlit-chatbot.git)
+    git clone https://github.com/saiteja-puttoju/langgraph-streamlit-chatbot.git
     cd langgraph-streamlit-chatbot
     ```
 
@@ -88,4 +93,4 @@ Your web browser will automatically open to the application's user interface (us
 2.  Type your message or question into the input box at the bottom of the screen.
 3.  Press **Enter**.
 4.  The chatbot will process your input using LangGraph and display the response.
-5.  Continue the conversation; the bot will remember the context of your previous messages
+5.  Continue the conversation; the bot will remember the context of your previous messages.
