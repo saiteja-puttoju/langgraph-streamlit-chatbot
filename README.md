@@ -1,15 +1,18 @@
 # 🤖 LangGraph Streamlit Chatbot
 
-**LangGraph Streamlit Chatbot** is a stateful conversational application built using Python. It combines **LangGraph** for managing conversation flow and memory with **Streamlit** for a clean, interactive user interface. The bot is powered by Google's **Gemini 2.5 Flash Lite** model to provide intelligent, context-aware responses.
+**LangGraph Streamlit Chatbot** is a stateful conversational application built using Python. It combines **LangGraph** for managing conversation flow and memory with **Streamlit** for a clean, interactive user interface.
+
+This project features **real-time streaming**, where the AI's response is displayed token-by-token as it is generated, providing a snappy and responsive user experience. The bot is powered by Google's **Gemini 2.5 Flash Lite** model.
 
 -----
 
 ## 🌟 Key Features
 
-  * **Stateful Conversations:** Utilizes `LangGraph`'s checkpointing system (`MemorySaver`) to retain conversation history, allowing the bot to "remember" previous interactions within a session.
+  * **Real-Time Streaming:** Uses `st.write_stream` and LangGraph's streaming capabilities to display the AI's response instantly as it is generated, rather than waiting for the full message.
+  * **Stateful Conversations:** Utilizes `LangGraph`'s checkpointing system (`InMemorySaver`) to retain conversation history, allowing the bot to "remember" previous interactions within a session.
   * **Powerful AI Model:** Integrates Google's `gemini-2.5-flash-lite` model via `langchain-google-genai` for fast and accurate language generation.
   * **Interactive UI:** Features a user-friendly chat interface built with **Streamlit**, which handles user input and displays the chat history in real-time.
-  * **Modular Architecture:** Cleanly separates the frontend UI logic (`chatbot_frontend.py`) from the backend agent logic (`langgraph_backend.py`) for better code maintainability.
+  * **Modular Architecture:** Cleanly separates the frontend UI logic (`streamlit_frontend_streaming.py`) from the backend agent logic (`langgraph_backend.py`) for better code maintainability.
   * **Session Management:** Uses Streamlit's session state to manage the unique `thread_id` for each conversation, ensuring distinct chat sessions.
 
 -----
@@ -77,13 +80,15 @@ Follow these instructions to set up and run the project on your local machine.
 
 ### Running the Application
 
-Once the setup is complete, you can run the Streamlit application with the following command:
+Once the setup is complete, you can run the Streamlit application. Use the `_streaming.py` file to see the new real-time features:
 
 ```bash
-streamlit run chatbot_frontend.py
+streamlit run streamlit_frontend_streaming.py
 ````
 
 Your web browser will automatically open to the application's user interface (usually at `http://localhost:8501`).
+
+*(Note: You can also run the non-streaming version using `streamlit run streamlit_frontend.py`)*
 
 -----
 
@@ -92,5 +97,5 @@ Your web browser will automatically open to the application's user interface (us
 1.  Open the application in your browser.
 2.  Type your message or question into the input box at the bottom of the screen.
 3.  Press **Enter**.
-4.  The chatbot will process your input using LangGraph and display the response.
+4.  The chatbot will **stream** its response, appearing text-by-text as it thinks.
 5.  Continue the conversation; the bot will remember the context of your previous messages.
